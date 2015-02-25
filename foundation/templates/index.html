@@ -1,0 +1,23 @@
+{% extends "foundation/base.html" %}
+
+{% import "foundation/fixes.html" as fixes %}
+
+{% block content %}
+<div class="container">
+  <h1>Hello, world!</h1>
+
+  <h2>This is the sample form (basic)</h2>
+  
+
+  <h2>The same form, inline</h2>
+  
+
+  <h2>And as a horizontal form</h2>
+  
+</div>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% endblock %}
