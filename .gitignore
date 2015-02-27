@@ -7,6 +7,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+sample_application/
+run_sample_application.py
 env/
 build/
 develop-eggs/
@@ -52,3 +54,11 @@ docs/_build/
 
 # PyBuilder
 target/
+
+#tests
+
+
+# IDE archives
+
+.idea
+*.sublime-*
