@@ -25,5 +25,11 @@ class Foundation(object):
             template_folder='templates',
             static_url_path=app.static_url_path + '/foundation',
         )
+        app.config.setdefault('FOUNDATION_CDN', 'local')
+        print app.config['FOUNDATION_CDN']
+
 
         app.register_blueprint(blueprint)
+
+        if not hasattr(app, 'extensions'):
+            app.extensions = {}
