@@ -18,9 +18,9 @@ Just wrapp your aplication like this::
 
     from fask_zurb_foundation import Foundation
 
-     [...] # your initiation code here
+    [...] # your initiation code here
 
-     Foundation(app)
+    Foundation(app)
 
 
 Now you will have a "*foundation/base.html*" template at your disposition to start developing your project fast enough.
@@ -34,8 +34,24 @@ In your templates
 
 
 
-What it loads
----------------
+Defaults
+----------
+
+By default it loads all the libraries locally, you can change it by 
+
+setting the *local* parameter to *False*::
+
+	
+	from fask_zurb_foundation import Foundation
+
+    [...] # your initiation code here
+
+    Foundation(app, local=False)
+
+
+
+What it loads locally
+++++++++++++++++++++++
 
 It loads different libraries automatically (support for choosing might be added in the future). Some of these come with Foundation 5
 
@@ -54,9 +70,15 @@ It loads different libraries automatically (support for choosing might be added 
 5. `Modernizer
 <http://modernizr.com/>`_ - JavaScript library that detects HTML5 and CSS3 features in the user’s browser
 
-# TODO
-------------
 
-Por ahora todo es estático
+What it loads when you set local to False
+++++++++++++++++++++++++++++++++++++++++++
+
+1. Foundation 5.5 from a CDN
+
+
+TODO
+-----
+1. add more libraries from CDN
 
 
