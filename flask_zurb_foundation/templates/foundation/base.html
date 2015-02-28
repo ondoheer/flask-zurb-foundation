@@ -12,7 +12,11 @@
 
     {%- block styles %}
     <!-- Foundation -->
-    <link rel="stylesheet" href="{{ url_for('foundation.static', filename="css/foundation.min.css")}}">
+    {% if local %}
+    <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/foundation.css') }}">
+    {% else %}
+    <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+    {% endif %}
     {%- endblock styles %}
     {%- endblock head %}
   </head>
@@ -32,7 +36,12 @@
     <script src="{{url_for('foundation.static', filename="js/vendor/modernizr.js")}}"></script>
     <script src="{{url_for('foundation.static', filename="js/vendor/placeholder.js")}}"></script>
     <script src="{{url_for('foundation.static', filename="js/vendor/fastclick.js")}}"></script>
-    <script src="{{url_for('foundation.static', filename="js/foundation.min.js")}}"></script>
+
+    {% if local %}
+    <script src="{{ url_for('foundation.static', filename='js/foundation.min.js') }}"></script>
+    {% else %}
+    <script src="http://cdn.foundation5.zurb.com/foundation.js"></script>
+    {% endif %}
     {%- endblock scripts %}
     {%- endblock body %}
   </body>
