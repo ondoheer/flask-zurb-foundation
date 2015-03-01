@@ -39,7 +39,7 @@ Defaults
 
 By default it loads all the libraries locally, you can change it by 
 
-setting the *local* parameter to *False*::
+setting the local parameter to False::
 
 	
 	from fask_zurb_foundation import Foundation
