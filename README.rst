@@ -2,6 +2,11 @@ Flask-zurb-foundation
 =======================
 
 
+
+.. image:: https://travis-ci.org/ondoheer/flask-zurb-foundation.png?branch=master
+   :target: https://travis-ci.org/ondoheer/flask-zurb-foundation
+
+
 Flask-Zurb-Foundation packages `Foundation 5
 <http://foundation.zurb.com/>`_ (*5.5.1*) into an extension as a blueprint called foundation.
 So far it justs wrappes a project in the basic `Foundation 5
