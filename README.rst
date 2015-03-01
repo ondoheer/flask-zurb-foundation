@@ -51,7 +51,7 @@ setting the local parameter to False::
 
 
 What it loads locally
-++++++++++++++++++++++
+----------------------
 
 It loads different libraries automatically (support for choosing might be added in the future). Some of these come with Foundation 5
 
@@ -72,7 +72,7 @@ It loads different libraries automatically (support for choosing might be added 
 
 
 What it loads when you set local to False
-++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------
 
 1. Foundation 5.5 from a CDN
 
