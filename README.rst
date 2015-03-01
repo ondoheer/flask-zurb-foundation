@@ -86,5 +86,5 @@ TODO
 -----
 
 1. add more libraries from CDN
-
+2. Add a better index.html to the sample app
 
