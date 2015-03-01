@@ -3,4 +3,8 @@ python:
  -"2.7"
  -"3.3"
 install: pip install -r requirements.txt
-script: python tests/test_sample_app.py 
+script: 
+- cd tests
+- python test_sample_app.py
+- python test_sanity.py
+
