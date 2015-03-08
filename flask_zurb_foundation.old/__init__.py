@@ -39,10 +39,5 @@ class Foundation(object):
         app.jinja_env.globals['local'] = self.local
         
 
-
-
-
-        
-
         if not hasattr(app, 'extensions'):
             app.extensions = {}

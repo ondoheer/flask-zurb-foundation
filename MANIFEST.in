@@ -1,0 +1,3 @@
+recursive-include flask_zurb_foundation/static *
+recursive-include flask_zurb_foundation/templates *.html
+include README.rst

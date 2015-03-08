@@ -2,7 +2,6 @@
 Zurb-Foundation-Flask
 ---------------------
 
-Description goes here...
 
 Links
 `````
@@ -28,10 +27,11 @@ setup(
     description='A Foundation Wrapper for Flask',
     long_description=read('README.rst'),
     packages=['flask_zurb_foundation'],
+    include_package_data=True,
     zip_safe=False,
     platforms='any',
     install_requires=[
-        'Flask'
+        'Flask>=0.8'
     ],
     classifiers=[
 
