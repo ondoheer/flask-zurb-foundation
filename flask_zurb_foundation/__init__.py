@@ -41,3 +41,5 @@ class Foundation(object):
 
         if not hasattr(app, 'extensions'):
             app.extensions = {}
+
+        

@@ -13,6 +13,13 @@ So far it justs wrappes a project in the basic `Foundation 5
 <http://foundation.zurb.com/>`_ styles and scripts.
 
 
+Note:
+--------
+
+*There was a problem when downloading it from pypi, it's corrected now. As of version 0.1.3 it does work when installing from pipy.*
+
+
+
 Usage
 ------
 
