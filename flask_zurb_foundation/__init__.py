@@ -11,33 +11,60 @@
 
 from flask import Blueprint
 
+
 class Foundation(object):
+
     """
     :param: app: Flask aplication
     :param: local: Bolean Value, if True it will serve local files for Foundation, else CDN  ones.
     """
-    
-    def __init__(self, app=None, local=True, navigation="off_canvas",  **kwargs):
+
+    def __init__(self,
+                 app=None,
+                 local=True,
+                 navigation="off_canvas",
+                 **kwargs
+                 ):
         self.local = local
         self.navigation = navigation
         self._dir = kwargs.get("_dir", "ltr")
         self.lang = kwargs.get("lang", "en")
-        
-        if self.navigation is "off_canvas":
-            self.tab_bar = kwargs.get("tab_bar", False)
-            self.menu_toggle = kwargs.get("menu_toggle", True)
-
-        elif self.navigation is "top_bar":
-            pass
-        elif self.navigation is "icon_bar":
-            pass
-        elif self.navigation is "side_nav":
-            pass
 
         if app:
             self.init_app(app)
-        
 
+    def offCanvasMenu(self, tab_bar=False, menu_toggle=True):
+        """
+        Includes the markup and jinja blocks for Foundation off-canvas menu.
+        param: tab_bar: makes the basic template use a Foundation Tab_bar and it's 
+                        predefined blocks
+        param: menu_toggle: makes the basic template use a menu toggle functionality
+                            and it's predefined blocks.
+        """
+        self.navigation = "off_canvas"
+        self.tab_bar = tab_bar
+        self.menu_toggle = menu_toggle
+
+        self.app.jinja_env.globals['tab_bar'] = self.tab_bar
+        self.app.jinja_env.globals['menu_toggle'] = self.menu_toggle
+
+    def topBarMenu(self):
+        """
+        Includes the markup and jinja blocks for Foundation top bar menu.
+        """
+        self.navigation = "top_bar"
+
+    def iconBarMenu(self):
+        """
+        Includes the markup and jinja blockks for Foundation iconbar menu.
+        """
+        self.navigation = "icon_bar"
+
+    def sideNav(self):
+        """
+        Includes the markup and jinja blocks for Foundation iconbar menu.
+        """
+        self.navigation = "side_nav"
 
     def init_app(self, app):
         blueprint = Blueprint(
@@ -55,10 +82,7 @@ class Foundation(object):
         app.jinja_env.globals['_dir'] = self._dir
         app.jinja_env.globals['lang'] = self.lang
 
-
-        
+        self.app = app
 
         if not hasattr(app, 'extensions'):
             app.extensions = {}
-
-        
