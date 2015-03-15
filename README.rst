@@ -44,7 +44,89 @@ In your templates
 
  <!-- your html/jinja2 code goes here -->
 
+Template Blocks
+******************
 
+Here are the template blocks yoou can build upon.
+To use them just call::
+
+	{% block <blockname> %}
+		...your code...
+	{% endblock %}
+
+
+block doc
+++++++++++
+
+Starts before declaring the <!DOCTYPE>, can be used to overwrite everything.
+
+block html_attribs
++++++++++++++++++++
+
+opening <html> tag, used to add attributes to it.
+
+
+block html
++++++++++++
+
+includes everything inside the <html> tag.
+
+
+block head
++++++++++++
+
+includes everything inside the <head> tag. This includes the <title>, <meta> and <link> tags, it should be used with **super()** so it keeps calling the foundation CSS
+
+like so::
+
+	{% block head %}
+		{{ super() }}
+		...your code...
+	{% endblock head %}
+
+
+block metas
+++++++++++++
+
+it just includes::
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+it should be called with **super()** unless you want to overwritte this behaviour.
+
+block styles
+++++++++++++
+
+this includes the foundation css and the foundation-icons css. 
+
+it should be used with **super()**
+
+block body_attributes
+++++++++++++++++++++++
+
+block inside the opening <body> tag. Used to add classes, id or data attributes to it.
+
+
+block navbar
++++++++++++++++
+
+Goes before block content, just a way to organize your code.
+
+block content
++++++++++++++++
+
+main web content should go here
+
+block footer
++++++++++++++
+
+goes before the scripts block 
+
+block scripts
+++++++++++++++
+
+JavaScript files should be linked here.
+it loads jquery, jquery.cookie, modernizr, placeholder, fastclick and foundation JavaScript files.
+It should be used with **super()**
 
 Defaults
 ----------
