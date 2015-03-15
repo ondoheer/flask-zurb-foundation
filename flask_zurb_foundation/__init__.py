@@ -17,8 +17,22 @@ class Foundation(object):
     :param: local: Bolean Value, if True it will serve local files for Foundation, else CDN  ones.
     """
     
-    def __init__(self, app=None, local=True):
+    def __init__(self, app=None, local=True, navigation="off_canvas",  **kwargs):
         self.local = local
+        self.navigation = navigation
+        self._dir = kwargs.get(_dir, "ltr")
+        self.lang = kwargs.get(lang, "en")
+        
+        if self.navigation is "off_canvas":
+            self.tab_bar = kwargs.get(tab_bar, False)
+            self.menu_toggle = kwargs.get(menu_toggle, True)
+
+        elif self.navigation is "top_bar":
+            pass
+        elif self.navigation is "icon_bar":
+            pass
+        elif self.navigation is "side_nav":
+            pass
 
         if app:
             self.init_app(app)
