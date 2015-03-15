@@ -9,6 +9,13 @@
     :license: BSD, see LICENSE for more details.
 """
 
+
+__version__ = '0.1.6'
+__version_info__ = __version__.split('.')
+__author__ = 'Pedro Baumann'
+__license__ = 'Apache'
+__copyright__ = '(c) 2015 - Pedro Baumann.'
+
 from flask import Blueprint
 
 
@@ -22,18 +29,16 @@ class Foundation(object):
     def __init__(self,
                  app=None,
                  local=True,
-                 navigation="off_canvas",
                  **kwargs
                  ):
         self.local = local
-        self.navigation = navigation
         self._dir = kwargs.get("_dir", "ltr")
         self.lang = kwargs.get("lang", "en")
 
         if app:
             self.init_app(app)
 
-    def offCanvasMenu(self, tab_bar=False, menu_toggle=True):
+    def offCanvasMenu(self, tab_bar=False, menu_toggle=True, menu=(True, False)):
         """
         Includes the markup and jinja blocks for Foundation off-canvas menu.
         param: tab_bar: makes the basic template use a Foundation Tab_bar and it's 
@@ -41,30 +46,37 @@ class Foundation(object):
         param: menu_toggle: makes the basic template use a menu toggle functionality
                             and it's predefined blocks.
         """
-        self.navigation = "off_canvas"
-        self.tab_bar = tab_bar
-        self.menu_toggle = menu_toggle
+        self.off_canvas = True
+        self.off_canvas_left, self.off_canvas_right = menu
+        self.off_canvas_tab_bar = tab_bar
+        self.off_canvas_menu_toggle = menu_toggle
 
-        self.app.jinja_env.globals['tab_bar'] = self.tab_bar
-        self.app.jinja_env.globals['menu_toggle'] = self.menu_toggle
+        self.app.jinja_env.globals['off_canvas'] = self.off_canvas
+        self.app.jinja_env.globals['off_canvas_left'] = self.off_canvas_left
+        self.app.jinja_env.globals['off_canvas_right'] = self.off_canvas_right
+        self.app.jinja_env.globals['off_canvas_tab_bar'] = self.off_canvas_tab_bar
+        self.app.jinja_env.globals['off_canvas_menu_toggle'] = self.off_canvas_menu_toggle
 
     def topBarMenu(self):
         """
         Includes the markup and jinja blocks for Foundation top bar menu.
         """
-        self.navigation = "top_bar"
+        self.top_bar = True
+        self.app.jinja_env.globals["top_bar"] = self.top_bar
 
     def iconBarMenu(self):
         """
         Includes the markup and jinja blockks for Foundation iconbar menu.
         """
-        self.navigation = "icon_bar"
+        self.icon_bar = True
+        self.app.jinja_env.globals['icon_bar'] = self.icon_bar
 
     def sideNav(self):
         """
         Includes the markup and jinja blocks for Foundation iconbar menu.
         """
-        self.navigation = "side_nav"
+        self.side_nav = True
+        self.app.jinja_env.globals['side_nav'] = self.side_nav
 
     def init_app(self, app):
         blueprint = Blueprint(
@@ -78,7 +90,7 @@ class Foundation(object):
         app.register_blueprint(blueprint)
 
         app.jinja_env.globals['local'] = self.local
-        app.jinja_env.globals['navigation'] = self.navigation
+        
         app.jinja_env.globals['_dir'] = self._dir
         app.jinja_env.globals['lang'] = self.lang
 

@@ -6,12 +6,17 @@ def create_app():
     app = Flask(__name__)
     # foundation = Foundation(app, local=False)
     # foundation.offCanvasMenu()
-    Foundation(app).offCanvasMenu()
+    # Foundation(app)
+    Foundation(app).offCanvasMenu(menu=(True,True))
     app.config['secret'] = 'mytoughsecret'
 
     @app.route('/')
     def index():
         return render_template('index.html')
+
+    @app.route('/test')
+    def test():
+    	return render_template("test.html")
 
     return app
 
