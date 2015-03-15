@@ -1,6 +1,6 @@
 {% block doc -%}
 <!DOCTYPE html>
-<html{% block html_attribs %}lang="{{lang}}" dir="{{_dir}}"{% endblock html_attribs %}>
+<html{% block html_attribs %} lang="{{lang}}" dir="{{_dir}}"{% endblock html_attribs %}>
 {%- block html %}
   <head>
     {%- block head %}
@@ -23,7 +23,38 @@
   </head>
   <body{% block body_attribs %}{% endblock body_attribs %}>
     {% block body -%}
-    {% block navbar %}
+    
+    {% block navbar -%}
+        {% if navigation == "top_bar" %}
+            <div {% block navbar_container %}{% endblock navbar_container %}
+              <nav class="top-bar" data-topbar role="navigation">
+                {% block navbar_inner %}{% endblock navbar_inner %}
+                
+              </nav>
+            </div>
+
+        {% elif navigation == "off_canvas" %}
+
+        <div class="off-canvas-wrap" data-offcanvas>
+          <div class="inner-wrap">
+            
+              
+
+            <main class="main-section">
+              <!-- content goes here -->
+              {% block off_canvas_main %}{% endblock off_canvas_main %}
+            </main>
+
+          <a class="exit-off-canvas"></a>
+
+          </div>
+        </div>
+
+        {% elif navigation == "side_nav" %}
+        <ul class="side-nav">
+          {% block side_nav_items %}{% endblock side_nav_items %}
+        </ul>
+        {% endif %}
     {%- endblock navbar %}
     {% block content -%}
     {%- endblock content %}

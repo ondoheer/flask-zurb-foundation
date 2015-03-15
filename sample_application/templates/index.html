@@ -2,11 +2,18 @@
 
 {% import "foundation/fixes.html" as fixes %}
 
+{% block navbar %}
+ {{super()}}
+{%endblock %}
 
-{% block content %}
+{% block off_canvas_main %}
+
+
+
 <div class="container">
+{{navigation}}{{request}}
 
-  Testing the aplication
+  Testing exttra the aplication
 
 </div>
 {% endblock %}

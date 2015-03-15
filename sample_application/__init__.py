@@ -4,7 +4,7 @@ from flask_zurb_foundation import Foundation
 
 def create_app():
     app = Flask(__name__)
-    Foundation(app, local=False)
+    Foundation(app, local=False, navigation="off_canvas")
 
     app.config['secret'] = 'mytoughsecret'
 

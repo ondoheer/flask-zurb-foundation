@@ -3,7 +3,7 @@
     flaskext.zurb_foundation
     ~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Description of the module goes here...
+    Adds Foundation framework functionalities to flask
 
     :copyright: (c) 2015 by ondoheer.
     :license: BSD, see LICENSE for more details.
@@ -20,12 +20,12 @@ class Foundation(object):
     def __init__(self, app=None, local=True, navigation="off_canvas",  **kwargs):
         self.local = local
         self.navigation = navigation
-        self._dir = kwargs.get(_dir, "ltr")
-        self.lang = kwargs.get(lang, "en")
+        self._dir = kwargs.get("_dir", "ltr")
+        self.lang = kwargs.get("lang", "en")
         
         if self.navigation is "off_canvas":
-            self.tab_bar = kwargs.get(tab_bar, False)
-            self.menu_toggle = kwargs.get(menu_toggle, True)
+            self.tab_bar = kwargs.get("tab_bar", False)
+            self.menu_toggle = kwargs.get("menu_toggle", True)
 
         elif self.navigation is "top_bar":
             pass
@@ -51,6 +51,11 @@ class Foundation(object):
         app.register_blueprint(blueprint)
 
         app.jinja_env.globals['local'] = self.local
+        app.jinja_env.globals['navigation'] = self.navigation
+        app.jinja_env.globals['_dir'] = self._dir
+        app.jinja_env.globals['lang'] = self.lang
+
+
         
 
         if not hasattr(app, 'extensions'):
