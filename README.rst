@@ -28,7 +28,7 @@ In Flask
 
 Just wrapp your aplication like this::
 
-    from fask_zurb_foundation import Foundation
+    from flask_zurb_foundation import Foundation
 
     [...] # your initiation code here
 
@@ -40,9 +40,9 @@ Now you will have a "*foundation/base.html*" template at your disposition to sta
 In your templates
 *******************
 
-{% extends "foundation/base.html" %}
+	{% extends "foundation/base.html" %}
 
- <!-- your html/jinja2 code goes here -->
+	<!-- your html/jinja2 code goes here -->
 
 Template Blocks
 ******************
