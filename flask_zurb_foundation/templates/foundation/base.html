@@ -1,12 +1,15 @@
 {% block doc -%}
 <!DOCTYPE html>
-<html{% block html_attribs %} lang="{{lang}}" dir="{{_dir}}"{% endblock html_attribs %}>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js"{% block html_attribs %} lang="{{lang}}" dir="{{_dir}}"{% endblock html_attribs %}>
 {%- block html %}
   <head>
     {%- block head %}
     <title>{% block title %}{% endblock title %}</title>
 
     {%- block metas %}
+    <meta charset="utf-8">
+      <!-- If you delete this meta tag World War Z will become a reality -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%- endblock metas %}
 
@@ -17,9 +20,15 @@
     {% else %}
     <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
     {% endif %}
+    <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/foundation-icons.css') }}">
     {%- endblock styles %}
+    {% block head_scripts %}
+    <script src="{{url_for('foundation.static', filename="js/vendor/modernizr.js")}}"></script>
+    {% endblock head_scripts%}
+
     {%- endblock head %}
+
   </head>
   <body{% block body_attribs %}{% endblock body_attribs %}>
     {% block body -%}
@@ -113,7 +122,7 @@
     {% block scripts %}
     <script src="{{url_for('foundation.static', filename="js/vendor/jquery.js")}}"></script>
     <script src="{{url_for('foundation.static', filename="js/vendor/jquery.cookie.js")}}"></script>
-    <script src="{{url_for('foundation.static', filename="js/vendor/modernizr.js")}}"></script>
+    
     <script src="{{url_for('foundation.static', filename="js/vendor/placeholder.js")}}"></script>
     <script src="{{url_for('foundation.static', filename="js/vendor/fastclick.js")}}"></script>
 
@@ -122,6 +131,9 @@
     {% else %}
     <script src="http://cdn.foundation5.zurb.com/foundation.js"></script>
     {% endif %}
+    <script>
+      $(document).foundation();
+    </script>
     {%- endblock scripts %}
     {%- endblock body %}
   </body>
