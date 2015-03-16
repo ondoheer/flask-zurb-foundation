@@ -5,7 +5,7 @@ from flask_zurb_foundation import Foundation
 def create_app():
     app = Flask(__name__)
     # foundation = Foundation(app, local=False)
-    Foundation(app).topBarMenu()
+    Foundation(app).iconBarMenu(5, "large-vertical")
     # Foundation(app)
     # Foundation(app).offCanvasMenu(menu=(True,True))
     app.config['secret'] = 'mytoughsecret'

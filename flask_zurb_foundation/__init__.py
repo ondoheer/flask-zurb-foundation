@@ -38,7 +38,11 @@ class Foundation(object):
         if app:
             self.init_app(app)
 
-    def offCanvasMenu(self, tab_bar=False, menu_toggle=True, menu=(True, False)):
+    def offCanvasMenu(self,
+                      tab_bar=False,
+                      menu_toggle=True,
+                      menu=(True, False)
+                      ):
         """
         Includes the markup and jinja blocks for Foundation off-canvas menu.
         param: tab_bar: makes the basic template use a Foundation Tab_bar and it's 
@@ -54,22 +58,61 @@ class Foundation(object):
         self.app.jinja_env.globals['off_canvas'] = self.off_canvas
         self.app.jinja_env.globals['off_canvas_left'] = self.off_canvas_left
         self.app.jinja_env.globals['off_canvas_right'] = self.off_canvas_right
-        self.app.jinja_env.globals['off_canvas_tab_bar'] = self.off_canvas_tab_bar
-        self.app.jinja_env.globals['off_canvas_menu_toggle'] = self.off_canvas_menu_toggle
+        self.app.jinja_env.globals[
+            'off_canvas_tab_bar'] = self.off_canvas_tab_bar
+        self.app.jinja_env.globals[
+            'off_canvas_menu_toggle'] = self.off_canvas_menu_toggle
 
-    def topBarMenu(self):
+    def topBarMenu(self, data_options=""):
         """
         Includes the markup and jinja blocks for Foundation top bar menu.
+        :param: str: will translate to the data-options attribute value.
         """
         self.top_bar = True
-        self.app.jinja_env.globals["top_bar"] = self.top_bar
+        self.data_options = data_options
 
-    def iconBarMenu(self):
+        self.app.jinja_env.globals["top_bar"] = self.top_bar
+        self.app.jinja_env.globals["data_options"] = data_options
+
+    def iconBarMenu(self, n_icons=4, vertical=""):
         """
-        Includes the markup and jinja blockks for Foundation iconbar menu.
+        Includes the markup and jinja blocks for Foundation iconbar menu.
+        :param: n_icons: number between 1-8, converts it to
+                         string to add the right class to the
+                         menu constructor
+        :param:vertical:str, the desired vertical class for the 
+                        top bar.
         """
+        numberToLetter = {
+            1: "one",
+            2: "two",
+            3: "three",
+            4: "four",
+            5: "five",
+            6: "six",
+            7: "seven",
+            8: "eight"
+        }
+
+        def checkNumber(number):
+            """
+            checks if the number is valid (1-8) and returns it
+            :param: number: int between 1-8
+            :returns: string version of the valid number 
+            """
+            if number > 8 or number < 1:
+                raise ValueError(
+                    "iconBarMenu n_icons parameter must be between 1-8")
+            else:
+                return numberToLetter[number]
+
         self.icon_bar = True
+        self.n_icons = checkNumber(n_icons)
+        self.vertical = vertical
+
+        self.app.jinja_env.globals['vertical'] = self.vertical
         self.app.jinja_env.globals['icon_bar'] = self.icon_bar
+        self.app.jinja_env.globals['n_icons'] = self.n_icons
 
     def sideNav(self):
         """
@@ -90,7 +133,7 @@ class Foundation(object):
         app.register_blueprint(blueprint)
 
         app.jinja_env.globals['local'] = self.local
-        
+
         app.jinja_env.globals['_dir'] = self._dir
         app.jinja_env.globals['lang'] = self.lang
 
