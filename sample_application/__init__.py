@@ -5,9 +5,9 @@ from flask_zurb_foundation import Foundation
 def create_app():
     app = Flask(__name__)
     # foundation = Foundation(app, local=False)
-    # foundation.offCanvasMenu()
+    Foundation(app).topBarMenu()
     # Foundation(app)
-    Foundation(app).offCanvasMenu(menu=(True,True))
+    # Foundation(app).offCanvasMenu(menu=(True,True))
     app.config['secret'] = 'mytoughsecret'
 
     @app.route('/')
