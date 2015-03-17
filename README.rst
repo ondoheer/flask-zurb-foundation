@@ -111,6 +111,13 @@ this includes the foundation css and the foundation-icons css.
 
 it should be used with **super()**
 
+block head_scripts
++++++++++++++++++++
+
+includes **modernizr.js**
+
+it should be used with **super()**
+
 block body_attributes
 ++++++++++++++++++++++
 
@@ -132,8 +139,8 @@ block footer
 
 goes before the scripts block 
 
-block scripts
-++++++++++++++
+block footer_scripts
++++++++++++++++++++++
 
 JavaScript files should be linked here.
 it loads jquery, jquery.cookie, modernizr, placeholder, fastclick and foundation JavaScript files.
