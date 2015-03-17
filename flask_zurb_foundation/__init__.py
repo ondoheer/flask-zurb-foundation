@@ -10,7 +10,7 @@
 """
 
 
-__version__ = '0.1.6'
+__version__ = '0.1.7'
 __version_info__ = __version__.split('.')
 __author__ = 'Pedro Baumann'
 __license__ = 'Apache'
@@ -122,6 +122,10 @@ class Foundation(object):
         self.app.jinja_env.globals['side_nav'] = self.side_nav
 
     def init_app(self, app):
+        app.config.set_default('FOUNDATION_MINIFIED', True)
+        app.config.set_default('FOUNDATION_CDN', True)
+        app.config.set_default('FOUNDATION_TEXT_DIRECTION', "ltr")
+        app.config.set_default('FOUNDATION_LANG', "en")
         blueprint = Blueprint(
             'foundation',
             __name__,
