@@ -16,7 +16,7 @@ So far it justs wrappes a project in the basic `Foundation 5
 Note:
 --------
 
-*There was a problem when downloading it from pypi, it's corrected now. As of version 0.1.3 it does work when installing from pipy.*
+*I'm working on a few methods that will allow to initialize different base templates based on Foundation components*
 
 
 
@@ -36,6 +36,17 @@ Just wrapp your aplication like this::
 
 
 Now you will have a "*foundation/base.html*" template at your disposition to start developing your project fast enough.
+
+
+Config Variables
+******************
+
+config["FOUNDATION_MINIFIED"] *set to True* - Will load most libraries and css minified
+config["FOUNDATION_CDN"] *set to False* - Will load most libraries from CDN 
+config["FOUNDATION_ICONS"] *set to True* - will load the foundation icons css.
+config["FOUNDATION_TEXT_DIRECTION"] *set to 'ltr'* - if set to 'rtl' will switch text reading orientation for languages that are read from right to left.
+config["FOUNDATION_LANG"] *set to "en"* - accepts a string, will set the html attribute language.
+
 
 In your templates
 *******************

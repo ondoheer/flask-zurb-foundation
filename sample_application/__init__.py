@@ -9,6 +9,8 @@ def create_app():
     # Foundation(app)
     # Foundation(app).offCanvasMenu(menu=(True,True))
     app.config['secret'] = 'mytoughsecret'
+    app.config["FOUNDATION_CDN"]
+    app.config["FOUNDATION_TEXT_DIRECTION"] = "rtl"
 
     @app.route('/')
     def index():

@@ -26,14 +26,7 @@ class Foundation(object):
     :param: local: Bolean Value, if True it will serve local files for Foundation, else CDN  ones.
     """
 
-    def __init__(self,
-                 app=None,
-                 local=True,
-                 **kwargs
-                 ):
-        self.local = local
-        self._dir = kwargs.get("_dir", "ltr")
-        self.lang = kwargs.get("lang", "en")
+    def __init__(self,app=None):        
 
         if app:
             self.init_app(app)
@@ -122,10 +115,16 @@ class Foundation(object):
         self.app.jinja_env.globals['side_nav'] = self.side_nav
 
     def init_app(self, app):
-        app.config.set_default('FOUNDATION_MINIFIED', True)
-        app.config.set_default('FOUNDATION_CDN', True)
-        app.config.set_default('FOUNDATION_TEXT_DIRECTION', "ltr")
-        app.config.set_default('FOUNDATION_LANG', "en")
+
+        self.app = app
+
+        app.config.setdefault('FOUNDATION_MINIFIED', True)
+        app.config.setdefault('FOUNDATION_CDN', False)
+        app.config.setdefault('FOUNDATION_ICONS', True)
+        app.config.setdefault('FOUNDATION_TEXT_DIRECTION', "ltr")
+        app.config.setdefault('FOUNDATION_LANG', "en")
+
+        
         blueprint = Blueprint(
             'foundation',
             __name__,
@@ -136,12 +135,9 @@ class Foundation(object):
 
         app.register_blueprint(blueprint)
 
-        app.jinja_env.globals['local'] = self.local
+        
 
-        app.jinja_env.globals['_dir'] = self._dir
-        app.jinja_env.globals['lang'] = self.lang
-
-        self.app = app
+        
 
         if not hasattr(app, 'extensions'):
             app.extensions = {}

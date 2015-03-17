@@ -1,11 +1,11 @@
 {% block doc -%}
 <!DOCTYPE html>
-<!--[if IE 9]><html class="lt-ie10" lang="{{lang}}" > <![endif]-->
-<html class="no-js"{% block html_attribs %} lang="{{lang}}" dir="{{_dir}}"{% endblock html_attribs %}>
+<!--[if IE 9]><html class="lt-ie10" lang="{{ config["FOUNDATION_LANG"] }}" > <![endif]-->
+<html class="no-js"{% block html_attribs %} lang="{{ config["FOUNDATION_LANG"] }}" dir="{{ config["FOUNDATION_TEXT_DIRECTION"] }}"{% endblock html_attribs %}>
 {%- block html %}
   <head>
     {%- block head %}
-    <title>{% block title %}{% endblock title %}</title>
+    <title>{% block title %}{{title}}{% endblock title %}</title>
 
     {%- block metas %}
     <meta charset="utf-8">
@@ -14,17 +14,24 @@
     {%- endblock metas %}
 
     {%- block styles %}
-    <!-- Foundation -->
-    {% if local %}
-    <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/foundation.css') }}">
-    {% else %}
-    <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
-    {% endif %}
-    <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/foundation-icons.css') }}">
+      <!-- Foundation -->
+       <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/normalize.css') }}">
+      {% if config["FOUNDATION_MINIFIED"] %}
+      <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/foundation.min.css') }}">
+      {% else %}
+      <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/foundation.css') }}">
+      {% endif %}
+      {% if config['FOUNDATION_ICONS']%}
+      <link rel="stylesheet" href="{{ url_for('foundation.static', filename='css/foundation-icons.css') }}">
+      {% endif  %}
     {%- endblock styles %}
+
     {% block head_scripts %}
-    <script src="{{url_for('foundation.static', filename="js/vendor/modernizr.js")}}"></script>
+      {% if config['FOUNDATION_CDN'] %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+      {% else %}
+        <script src="{{url_for('foundation.static', filename='js/vendor/modernizr.js')}}"></script>
+      {% endif %}
     {% endblock head_scripts%}
 
     {%- endblock head %}
@@ -101,17 +108,7 @@
     {%- endblock navbar %}
     {% block content -%}
 
-    globals: 
-    <li>off_canvas :{{ off_canvas }}</li>
-    <li>off_canvas_left: {{ off_canvas_left }}</li>
-    <li>off_canvas_right: {{ off_canvas_right }}</li>
-    <li>off_canvas_tab_bar: {{ off_canvas_tab_bar }}</li>
-    <li>off_canvas_menu_toggle: {{off_canvas_menu_toggle}}</li>
-    <li>top_bar: {{top_bar}}</li>
-    <li>icon_bar: {{icon_bar}}</li>
-    <li>side_nav: {{side_nav}}</li>
-    <li></li>
-    <li></li>
+    
     {%- endblock content %}
    
       
@@ -119,23 +116,48 @@
 {% block footer -%}
 {%- endblock footer%}
 
-    {% block scripts %}
-    <script src="{{url_for('foundation.static', filename="js/vendor/jquery.js")}}"></script>
-    <script src="{{url_for('foundation.static', filename="js/vendor/jquery.cookie.js")}}"></script>
-    
-    <script src="{{url_for('foundation.static', filename="js/vendor/placeholder.js")}}"></script>
-    <script src="{{url_for('foundation.static', filename="js/vendor/fastclick.js")}}"></script>
+      {% block footer_scripts %}
+        {% if config['FOUNDATION_CDN'] %}
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.{% if config['FOUNDATION_MINIFIED'] %}min.{% endif %}js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-placeholder/2.0.7/jquery.placeholder.min.js"></script>
+          <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"></script>
+        {% else %}
 
-    {% if local %}
-    <script src="{{ url_for('foundation.static', filename='js/foundation.min.js') }}"></script>
-    {% else %}
-    <script src="http://cdn.foundation5.zurb.com/foundation.js"></script>
-    {% endif %}
-    <script>
-      $(document).foundation();
-    </script>
-    {%- endblock scripts %}
-    {%- endblock body %}
+          <script src="{{url_for('foundation.static', filename='js/vendor/jquery.js')}}"></script>
+          <script src="{{url_for('foundation.static', filename='js/vendor/jquery.cookie.js')}}"></script>        
+          <script src="{{url_for('foundation.static', filename='js/vendor/placeholder.js')}}"></script>
+          <script src="{{url_for('foundation.static', filename='js/vendor/fastclick.js')}}"></script>
+        {% endif %}
+        {% if config['FOUNDATION_CDN'] %}
+          <script src="http://cdn.foundation5.zurb.com/foundation.js"></script>
+
+        {% elif config['FOUNDATION_MINIFIED'] %}
+          <script src="{{ url_for('foundation.static', filename='js/foundation.min.js') }}"></script>
+        {% else %}
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.abide.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.accordion.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.alert.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.clearing.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.dropdown.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.equalizer.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.interchange.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.joyride.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.magellan.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.offcanvas.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.orbit.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.reveal.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.tab.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.tooltip.js') }}"></script>
+          <script src="{{ url_for('foundation.static', filename='js/foundation/foundation.topbar.js') }}"></script>
+        {% endif %}
+
+        <script>
+          $(document).foundation();
+        </script>
+      {%- endblock footer_scripts %}
+{%- endblock body %}
   </body>
 {%- endblock html %}
 </html>
