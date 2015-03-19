@@ -4,21 +4,16 @@ from flask_zurb_foundation import Foundation
 
 def create_app():
     app = Flask(__name__)
-    # foundation = Foundation(app, local=False)
-    Foundation(app).iconBarMenu(5, "large-vertical")
-    # Foundation(app)
-    # Foundation(app).offCanvasMenu(menu=(True,True))
+    
+    Foundation(app)
+    
     app.config['secret'] = 'mytoughsecret'
     app.config["FOUNDATION_CDN"]
-    app.config["FOUNDATION_TEXT_DIRECTION"] = "rtl"
+    #app.config["FOUNDATION_TEXT_DIRECTION"] = "rtl"
 
     @app.route('/')
     def index():
-        return render_template('index.html')
-
-    @app.route('/test')
-    def test():
-    	return render_template("test.html")
+        return render_template('index.html')    
 
     return app
 
