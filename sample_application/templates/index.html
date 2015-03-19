@@ -1,43 +1,27 @@
 {% extends "foundation/base.html" %}
 
 {% import "foundation/fixes.html" as fixes %}
+{% import "foundation/components.html" as components %}
 
 {% block head %}
-{{super()}}
-{{fixes.ie8()}}
+	{{super()}}
+	{{fixes.ie8()}}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
 
 {% endblock %}
 
 
 
-{% block off_canvas_main %}
+{% block navbar %}
+	{% call   components.topbar() %}
+	
+		<li>item1</li>
+		<li>item2</li>
+		<li>item3</li>
+		<li>item4</li>
+		<li>item5</li>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, provident. Voluptas blanditiis fugiat amet ipsam provident facere aspernatur, suscipit repudiandae iste reprehenderit vero, labore recusandae doloremque excepturi accusantium fugit. Voluptas odit quo labore commodi reprehenderit sequi, minus quia facilis, expedita maiores culpa id officiis laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-
+	{%	endcall %}
 {% endblock %}
-
-{% block off_canvas_left %}
-<h3>menu izquierda</h3>
-<ul>
-	<li>item1</li>
-	<li>item2</li>
-	<li>item3</li>
-	<li>item4</li>
-	<li>item5</li>
-</ul>
-{% endblock off_canvas_left %}
-
-
-{% block off_canvas_right %}
-
-<h3>Menu derecha</h3>
-<ul>
-	<li>item1</li>
-	<li>item2</li>
-	<li>item3</li>
-	<li>item4</li>
-	<li>item5</li>
-</ul>
-{% endblock off_canvas_right %}
 
 

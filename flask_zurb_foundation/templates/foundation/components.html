@@ -1,0 +1,9 @@
+{% macro topbar(data_options='') %}
+
+		<nav class="top-bar" data-topbar role="navigation" data-options="{{data_options}}">   
+			{{ caller() }}    
+	            
+	  	</nav>
+
+
+{% endmacro %}
