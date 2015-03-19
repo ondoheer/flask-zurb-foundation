@@ -41,68 +41,7 @@
     {% block body -%}
     
     {% block navbar -%}
-      {# TOP BAR #}
-      {% if top_bar %}
-        {% block top_bar %}
-          <nav class="top-bar" data-topbar role="navigation" data-options="{{data_options}}">
-            {% block top_bar_items %}
-            {% endblock %}
-            
-          </nav>
-            
-        {% endblock top_bar %}
-      {% endif %}
-      {# OFF CANVAS #}
-      {% if off_canvas -%}
-        {% block off_canvas %}
-        <div class="off-canvas-wrap" data-offcanvas>
-          <div class="inner-wrap">
-            
-              {% if menu_toggle %}
-              <h1>MENU TOGGLE!!!</h1>
-              {% endif %}
-              
-              <!-- target the rightside menu -->
-              
-              {% if off_canvas_left %}
-                <!-- target the leftside menu -->
-                <a href="#off-canvas-left" role="button" class="left-off-canvas-toggle">Left Menu</a>
-                <nav id="off-canvas-left" class="left-off-canvas-menu"><!-- put your links in here -->{% block off_canvas_left %}{% endblock off_canvas_left %}</nav>
-              {% endif %}
-              {% if off_canvas_right %}
-                <a href="#off-canvas-right" role="button" class="right-off-canvas-toggle">Right Menu</a>
-                <nav id="off-canvas-right" class="right-off-canvas-menu"><!-- put your links in here -->{% block off_canvas_right %}{% endblock off_canvas_right %}</nav>
-              {% endif %}
-            <main class="main-section">
-              <!-- content goes here -->
-              {% block off_canvas_main %}{% endblock off_canvas_main %}
-            </main>
-
-            <a class="exit-off-canvas"></a>
-
-          </div>
-        </div>
-        {% endblock off_canvas%}
-      {% endif %}
-      
-      {# ICON BAR #}
-      {% if icon_bar %}
-        {% block icon_bar %}
-          <div class="iconbar {{n_icons}}-up {{vertical}}">
-            {% block icon_bar_items %}{% endblock icon_bar_items %}
-          </div>
-        {% endblock icon_bar %}
-      {% endif %}
-      {# SIDENAV #}
-      {% if side_nav %}
-        {% block side_nav %}
-          <ul class="side-nav">
-            {% block sidenav_items %}
-            {% endblock %}
-          </ul>
-
-        {% endblock side_nav %}
-      {% endif %}
+        
 
         
     {%- endblock navbar %}

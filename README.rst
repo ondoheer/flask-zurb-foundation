@@ -16,7 +16,7 @@ So far it justs wrappes a project in the basic `Foundation 5
 Note:
 --------
 
-*I'm working on a few methods that will allow to initialize different base templates based on Foundation components*
+*I'm working on a few methods and macros that will allow to implement some of Foundation components quickly. Until they work I'll clean the master branch, it was getting kind of bloated with code that wasn't documented yet.*
 
 
 
