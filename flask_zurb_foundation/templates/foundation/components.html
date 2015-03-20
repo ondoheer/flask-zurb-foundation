@@ -1,0 +1,70 @@
+{% macro topbar(class="" , data_options='') %}
+	<div class="{{class}}">
+		<nav class="top-bar" data-topbar role="navigation" data-options="{{data_options}}">   
+			{{ caller() }}    
+	            
+	  	</nav>
+	</div>
+
+{% endmacro %}
+
+
+
+{% macro sidenav(title="sidenav") %}
+	<ul class="side-nav" role="navigation" title="{{ title }}">
+   		<!-- add role="menuitem to your <li>" -->
+   		{{ caller() }}
+ 	</ul>
+
+
+{% endmacro %}
+
+
+
+{% macro subnav(title="sidenav") %}
+	<dl class="sub-nav" role="menu" title="{{title}}">
+   		<!-- add role="menuitem to your <dd>" -->
+   		{{ caller() }}
+ 	</dl>
+{% endmacro %}
+
+
+
+{% macro iconbar(number="five", orientation="", type="img", icons=[], labels=[]) %}
+	<div class="icon-bar {{number}}-up {{orientation}}">
+   		<!-- add role="menuitem to your <a>" -->
+   		{{ caller() }}
+   		{% for icon in icons %}
+   		<a class="item">
+   			{% set filename = "img/svgs/" + icon + ".svg" %}
+   			<img src="{{ url_for('foundation.static', filename=filename) }}" alt="">
+   			<label >{{labels[loop.index0]}}</label>
+   		</a>
+   		{% endfor %}
+ 	</div>
+{% endmacro %}
+
+
+{% macro offcanvas(left_title="") %}
+	  <div class="off-canvas-wrap" data-offcanvas>
+	  <div class="inner-wrap">
+
+	    <a class="left-off-canvas-toggle" href="#" >{{left_title}}</a>
+
+	    <!-- Off Canvas Menu -->
+	    <aside class="left-off-canvas-menu">
+	        <!-- whatever you want goes here -->
+	        
+	        
+	    </aside>
+
+	    <!-- main content goes here -->
+	    {{ caller() }}
+
+	  <!-- close the off-canvas menu -->
+	  <a class="exit-off-canvas"></a>
+
+	  </div>
+	</div>
+
+{% endmacro %}

@@ -9,7 +9,9 @@ def create_app():
     
     app.config['secret'] = 'mytoughsecret'
     app.config["FOUNDATION_CDN"]
+
     #app.config["FOUNDATION_TEXT_DIRECTION"] = "rtl"
+
 
     @app.route('/')
     def index():
