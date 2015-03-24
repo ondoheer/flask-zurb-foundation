@@ -16,15 +16,25 @@ So far it justs wrappes a project in the basic `Foundation 5
 Note:
 --------
 
-*I'm working on a few methods and macros that will allow to implement some of Foundation components quickly. Until they work I'll clean the master branch, it was getting kind of bloated with code that wasn't documented yet.*
+*Basic navigation macros have been added, I'll try to add other foundation components macros as I need them in our projects.*
+
+Index
+---------
+
+- `How to use it in flask`_
+- `Config Variables`_
+- `How to extend your templates`_
+- `Template Blocks`_
+- `Foundation Components Macros`_
+
 
 
 
 Usage
 ------
 
-In Flask
-***********
+How to use it in flask
+************************
 
 Just wrapp your aplication like this::
 
@@ -52,8 +62,8 @@ Config Variables
 **config["FOUNDATION_LANG"]** - *defaults to "en"* - accepts a string, will set the html attribute language.
 
 
-In your templates
-*******************
+How to extend your templates
+*******************************
 
 	{% extends "foundation/base.html" %}
 
@@ -150,8 +160,8 @@ JavaScript files should be linked here.
 it loads jquery, jquery.cookie, modernizr, placeholder, fastclick and foundation JavaScript files.
 It should be used with **super()**
 
-Foundation components
-***********************
+Foundation Components Macros
+*****************************
 
 There are a few built-in Foundation components macros.
 
@@ -169,28 +179,49 @@ to use them just open a **call block** importing the component like so::
 
 	{%	endcall %}
 
+
 components.topbar
 ++++++++++++++++++
 
-should be used inside the **navbar** block.
+`Foundation docs <http://foundation.zurb.com/docs/components/topbar.html>`_
+
+It should be used inside the **navbar** block.
 
 params
 ```````
 
-- class: adds string to the topbar container. Used for fixed, sticky, contain-to-grid
+- class: adds string to the topbar container. Used for fixed, sticky, contain-to-grid clases.
 
-- data_options: adds string to topbar data-options
+- data_options: adds string to topbar data-options.
 
 
 
 components.sidenav
 ++++++++++++++++++++
 
+`Foundation docs <http://foundation.zurb.com/docs/components/sidenav.html>`_
+
 params
 ```````
 
+- title: accepts a string that will render as the sidenav title.
+
+
 components.iconbar
 +++++++++++++++++++
+
+`Foundation docs <http://foundation.zurb.com/docs/components/icon-bar.html>`_
+
+Since flask-zurb-foundation comes with all the Foundation icons by default the iconbar macro allows you to work complex icon menues easily.
+
+params
+```````
+
+- number : written number, ex. "one", "five"; from one to eight. It will render evely distributed icons according to the number passed to it.
+- orientation: defaults no nothing (which means horizontal), accepts "vertical" as a parameter.
+- type: defaults to *img*, 
+- icons: 
+- labels: 
 
 components.offcanvas
 ++++++++++++++++++++++
