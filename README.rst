@@ -41,11 +41,15 @@ Now you will have a "*foundation/base.html*" template at your disposition to sta
 Config Variables
 ******************
 
-config["FOUNDATION_MINIFIED"] *set to True* - Will load most libraries and css minified
-config["FOUNDATION_CDN"] *set to False* - Will load most libraries from CDN 
-config["FOUNDATION_ICONS"] *set to True* - will load the foundation icons css.
-config["FOUNDATION_TEXT_DIRECTION"] *set to 'ltr'* - if set to 'rtl' will switch text reading orientation for languages that are read from right to left.
-config["FOUNDATION_LANG"] *set to "en"* - accepts a string, will set the html attribute language.
+**config["FOUNDATION_MINIFIED"]** - *set to True* - Will load most libraries and css minified
+
+**config["FOUNDATION_CDN"]** - *set to False* - Will load most libraries from CDN 
+
+**config["FOUNDATION_ICONS"]** - *set to True* - will load the foundation icons css.
+
+**config["FOUNDATION_TEXT_DIRECTION"]** - *set to 'ltr'* - if set to 'rtl' will switch text reading orientation for languages that are read from right to left.
+
+**config["FOUNDATION_LANG"]** - *set to "en"* - accepts a string, will set the html attribute language.
 
 
 In your templates
@@ -58,7 +62,7 @@ In your templates
 Template Blocks
 ******************
 
-Here are the template blocks yoou can build upon.
+Here are the template blocks you can build upon.
 To use them just call::
 
 	{% block <blockname> %}
@@ -146,24 +150,15 @@ JavaScript files should be linked here.
 it loads jquery, jquery.cookie, modernizr, placeholder, fastclick and foundation JavaScript files.
 It should be used with **super()**
 
-Defaults
-----------
-
-By default it loads all the libraries locally, you can change it by 
-
-setting the local parameter to False::
-
-	
-	from fask_zurb_foundation import Foundation
-
-    [...] # your initiation code here
-
-    Foundation(app, local=False)
 
 
 
-What it loads locally
-----------------------
+
+
+
+
+What it loads when setting **config["FOUNDATION_CDN"]** 
+-----------------------------------------------------------
 
 It loads different libraries automatically (support for choosing might be added in the future). Some of these come with Foundation 5
 
@@ -183,15 +178,4 @@ It loads different libraries automatically (support for choosing might be added 
 <http://modernizr.com/>`_ - JavaScript library that detects HTML5 and CSS3 features in the user’s browser
 
 
-What it loads when you set local to False
-------------------------------------------
-
-1. Foundation 5.5 from a CDN
-
-
-TODO
------
-
-1. add more libraries from CDN
-2. Add a better index.html to the sample app
 

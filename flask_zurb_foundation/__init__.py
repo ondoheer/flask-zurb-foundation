@@ -10,10 +10,10 @@
 """
 
 
-__version__ = '0.1.9'
+__version__ = '0.2.0'
 __version_info__ = __version__.split('.')
 __author__ = 'Pedro Baumann'
-__license__ = 'Apache'
+__license__ = 'BSD'
 __copyright__ = '(c) 2015 - Pedro Baumann.'
 
 from flask import Blueprint
