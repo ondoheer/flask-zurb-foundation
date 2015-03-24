@@ -172,8 +172,22 @@ to use them just open a **call block** importing the component like so::
 components.topbar
 ++++++++++++++++++
 
+should be used inside the **navbar** block.
+
+params
+```````
+
+- class: adds string to the topbar container. Used for fixed, sticky, contain-to-grid
+
+- data_options: adds string to topbar data-options
+
+
+
 components.sidenav
 ++++++++++++++++++++
+
+params
+```````
 
 components.iconbar
 +++++++++++++++++++
