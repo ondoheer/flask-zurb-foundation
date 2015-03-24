@@ -10,7 +10,7 @@
 
 
 
-{% macro sidenav(title="sidenav") %}
+{% macro sidenav(title="") %}
 	<ul class="side-nav" role="navigation" title="{{ title }}">
    		<!-- add role="menuitem to your <li>" -->
    		{{ caller() }}
@@ -21,23 +21,29 @@
 
 
 
-{% macro subnav(title="sidenav") %}
+{% macro subnav(title="") %}
 	<dl class="sub-nav" role="menu" title="{{title}}">
+   		<dt>{{title}}</dt>
    		<!-- add role="menuitem to your <dd>" -->
+
    		{{ caller() }}
  	</dl>
 {% endmacro %}
 
 
 
-{% macro iconbar(number="five", orientation="", type="img", icons=[], labels=[]) %}
-	<div class="icon-bar {{number}}-up {{orientation}}">
+{% macro iconbar(number="five", vertical=False, type="icon", icons=[], labels=[]) %}
+	<div class="icon-bar {{number}}-up {% if vertical %}vertical {% endif %}">
    		<!-- add role="menuitem to your <a>" -->
    		{{ caller() }}
    		{% for icon in icons %}
    		<a class="item">
-   			{% set filename = "img/svgs/" + icon + ".svg" %}
-   			<img src="{{ url_for('foundation.static', filename=filename) }}" alt="">
+   			{% if type == "img" %}
+   				{% set filename = "img/svgs/" + icon + ".svg" %}
+   				<img src="{{ url_for('foundation.static', filename=filename) }}" alt="">
+   			{% elif type == "icon" %}
+   				<i class="{{icon}}"></i>
+   			{% endif %}
    			<label >{{labels[loop.index0]}}</label>
    		</a>
    		{% endfor %}
@@ -46,7 +52,7 @@
 
 
 
-{% macro offcanvas(left_title="", right_title="") %}
+{% macro offcanvas() %}
 	
   	<div class="off-canvas-wrap" data-offcanvas>
 	  <div class="inner-wrap">

@@ -183,7 +183,7 @@ to use them just open a **call block** importing the component like so::
 components.topbar
 ++++++++++++++++++
 
-`Foundation docs <http://foundation.zurb.com/docs/components/topbar.html>`_
+`Foundation docs: topbar <http://foundation.zurb.com/docs/components/topbar.html>`_
 
 It should be used inside the **navbar** block.
 
@@ -194,12 +194,30 @@ params
 
 - data_options: adds string to topbar data-options.
 
+**example**::
+
+	{% block navbar %}
+		{% call   components.topbar(class="fixed") %}
+		
+			<li>item1</li>
+			<li>item2</li>
+			<li>item3</li>
+			<li>item4</li>
+			<li>item5</li>
+
+		{%	endcall %}
+
+	  
+	{% endblock %}
+
+
+
 
 
 components.sidenav
 ++++++++++++++++++++
 
-`Foundation docs <http://foundation.zurb.com/docs/components/sidenav.html>`_
+`Foundation docs: sidenav <http://foundation.zurb.com/docs/components/sidenav.html>`_
 
 params
 ```````
@@ -207,21 +225,84 @@ params
 - title: accepts a string that will render as the sidenav title.
 
 
+**example**::
+
+	{% call components.sidenav(title="Mi menu") %}
+
+	   <li role="menuitem"><a href="#">Link 1</a></li>
+	   <li role="menuitem"><a href="#">Link 2</a></li>
+	   <li role="menuitem"><a href="#">Link 3</a></li>
+	   <li role="menuitem"><a href="#">Link 4</a></li>
+	  </div>
+	{% endcall %}
+
+
+
+components.subnav
+++++++++++++++++++++
+
+`Foundation docs: subnav <http://foundation.zurb.com/docs/components/subnav.html>`_
+
+params
+```````
+
+- title: accepts a string that will render as the subnav title.
+
+
+**example**::
+
+	{% call components.subnav(title="Filter: ") %}
+		
+		<dd class="active"><a href="#">All</a></dd>
+		<dd><a href="#">Active</a></dd>
+		<dd><a href="#">Pending</a></dd>
+		<dd class="hide-for-small-only"><a href="#">Suspended</a></dd>
+	{% endcall %}
+
+
 components.iconbar
 +++++++++++++++++++
 
-`Foundation docs <http://foundation.zurb.com/docs/components/icon-bar.html>`_
+`Foundation docs: iconbar <http://foundation.zurb.com/docs/components/icon-bar.html>`_
 
 Since flask-zurb-foundation comes with all the Foundation icons by default the iconbar macro allows you to work complex icon menues easily.
 
 params
 ```````
 
-- number : written number, ex. "one", "five"; from one to eight. It will render evely distributed icons according to the number passed to it.
-- orientation: defaults no nothing (which means horizontal), accepts "vertical" as a parameter.
-- type: defaults to *img*, 
-- icons: 
-- labels: 
+- number : -*string* - written number, ex. "one", "five"; from one to eight. It will render evely distributed icons according to the number passed to it.
+- vertical:  - *bool* - defaults to False.
+- type: - *string* - defaults to *img*, acepts *icon*. Img will load the default Foundation SVGs, using icon will load the icons as font-icons, allowing for an easier change of icons colors.
+- icons: - *list* - acceptsa list of strings with the name of the icons or imgs you want to load for the iconbar. Place them in the order you want them to appear. Just pass to the array the name of the foundation `icons <http://zurb.com/playground/foundation-icon-fonts-3>`_ preceded by "fi-". (check the example)
+- labels: - *list* - defaults to empty. List of strings that will display under the icons (if you need it). Write them in the same order as their corresponding icons.
+
+**example**::
+
+	{% call components.iconbar(number="four", vertical=True, icons=["fi-home", "fi-bookmark", "fi-info", "fi-anchor"], labels=["Home", "Bookmarks", "info", "anchor"]) %}
+  
+	{% endcall%}
+
+
 
 components.offcanvas
 ++++++++++++++++++++++
+
+`Foundation docs: offcanvas <http://foundation.zurb.com/docs/components/offcanvas.html>`_
+
+Just the basic off canvas markup. Remeber all of your web content should fit inside of the **call**.
+
+**example**::
+
+	{% call components.offcanvas() %}
+		<!-- Off Canvas Menu -->
+		    <aside class="left-off-canvas-menu">
+		        <!-- whatever you want goes here -->
+		        <ul>
+		          <li><a href="#">Item 1</a></li>
+		        ...
+		        </ul>
+		    </aside>
+
+		    <!-- main content goes here -->
+		    <p>Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p>
+    {% endcall %}
