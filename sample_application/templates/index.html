@@ -47,18 +47,39 @@
   <dd class="hide-for-small-only"><a href="#">Suspended</a></dd>
 </dl>
 
-{% call components.iconbar(number="three", icons=["fi-home", "fi-bookmark", "fi-info"], labels=["Home", "Bookmarks", "info"]) %}
+{% call components.iconbar(number="four", orientation="vertical", icons=["fi-home", "fi-bookmark", "fi-info", "fi-anchor"], labels=["Home", "Bookmarks", "info", "anchor"]) %}
   
 {% endcall%}
 
 <div class="large-1 columns">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dolorem, quasi quo asperiores soluta, amet quod nulla eos sit fugiat in veniam. Illum id reprehenderit totam, ducimus temporibus repellendus voluptatibus tempora nulla excepturi commodi sit corporis voluptates non maiores magni quaerat saepe quod error! Corporis!</div>
 
-{% call components.offcanvas(left_title="Menu izquierdo") %}
-  test
+{% call components.offcanvas() %}
+    
+  
+    <nav class="tab-bar">
 
+  <div class="left-small">
+    <a href="#idOfLeftMenu" role="button" aria-controls="idOfLeftMenu" aria-expanded="false" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+  <div class="right-small">
+    <a href="#idOfRightMenu" role="button" aria-controls="idOfRightMenu" aria-expanded="false" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+</nav>
+
+    <!-- main content goes here -->
+    <p>Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p>
+
+    <!-- close the off-canvas menu -->
+  
 
 {% endcall %}
 
+
+
+
+
+
+  
 {% endblock content %}
 
 
