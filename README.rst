@@ -41,15 +41,15 @@ Now you will have a "*foundation/base.html*" template at your disposition to sta
 Config Variables
 ******************
 
-**config["FOUNDATION_MINIFIED"]** - *set to True* - Will load most libraries and css minified
+**config["FOUNDATION_MINIFIED"]** - *defaults to True* - Will load most libraries and css minified
 
-**config["FOUNDATION_CDN"]** - *set to False* - Will load most libraries from CDN 
+**config["FOUNDATION_CDN"]** - *defaults to False* - Will load most libraries from CDN 
 
-**config["FOUNDATION_ICONS"]** - *set to True* - will load the foundation icons css.
+**config["FOUNDATION_ICONS"]** - *defaults to True* - will load the foundation icons css.
 
-**config["FOUNDATION_TEXT_DIRECTION"]** - *set to 'ltr'* - if set to 'rtl' will switch text reading orientation for languages that are read from right to left.
+**config["FOUNDATION_TEXT_DIRECTION"]** - *defaults to 'ltr'* - if set to 'rtl' will switch text reading orientation for languages that are read from right to left.
 
-**config["FOUNDATION_LANG"]** - *set to "en"* - accepts a string, will set the html attribute language.
+**config["FOUNDATION_LANG"]** - *defaults to "en"* - accepts a string, will set the html attribute language.
 
 
 In your templates
@@ -150,32 +150,33 @@ JavaScript files should be linked here.
 it loads jquery, jquery.cookie, modernizr, placeholder, fastclick and foundation JavaScript files.
 It should be used with **super()**
 
+Foundation components
+***********************
 
+There are a few built-in Foundation components macros.
 
+The macros add the basic Foundation markup for them to work. So, basically they are just macros that wrap a **call**.
 
+to use them just open a **call block** importing the component like so::
 
+	{% call   components.topbar(class="fixed") %}
 
+		<li>item1</li>
+		<li>item2</li>
+		<li>item3</li>
+		<li>item4</li>
+		<li>item5</li>
 
+	{%	endcall %}
 
-What it loads when setting **config["FOUNDATION_CDN"]** 
------------------------------------------------------------
+components.topbar
+++++++++++++++++++
 
-It loads different libraries automatically (support for choosing might be added in the future). Some of these come with Foundation 5
+components.sidenav
+++++++++++++++++++++
 
-1. `HTML5 shiv
-<https://github.com/aFarkas/html5shiv>`_ - The HTML5 Shiv enables use of HTML5 sectioning elements in legacy Internet Explorer and provides basic HTML5 styling for Internet Explorer 6-9, Safari 4.x (and iPhone 3.x), and Firefox 3.x.
+components.iconbar
++++++++++++++++++++
 
-2. `RespondJS
-<https://github.com/scottjehl/Respond>`_ - A fast & lightweight polyfill for min/max-width CSS3 Media Queries
-
-3. `FastClick
-<https://github.com/ftlabs/fastclick>`_ - FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers.
-
-4. `jQuery
-<http://jquery.com/>`_ - v 2.1.3
-
-5. `Modernizer
-<http://modernizr.com/>`_ - JavaScript library that detects HTML5 and CSS3 features in the user’s browser
-
-
-
+components.offcanvas
+++++++++++++++++++++++
