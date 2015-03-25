@@ -167,7 +167,12 @@ There are a few built-in Foundation components macros.
 
 The macros add the basic Foundation markup for them to work. So, basically they are just macros that wrap a **call**.
 
-to use them just open a **call block** importing the component like so::
+to use them first import the macros::
+
+	{% import "foundation/components.html" as components%}
+
+
+then just open a **call block** importing the component like so::
 
 	{% call   components.topbar(class="fixed") %}
 
