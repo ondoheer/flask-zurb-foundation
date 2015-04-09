@@ -23,7 +23,6 @@ class Foundation(object):
 
     """
     :param: app: Flask aplication
-    :param: local: Bolean Value, if True it will serve local files for Foundation, else CDN  ones.
     """
 
     def __init__(self,app=None):        
