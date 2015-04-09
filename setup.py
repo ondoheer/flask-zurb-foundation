@@ -19,7 +19,7 @@ def read(fname):
 
 setup(
     name='Flask-Zurb-Foundation',
-    version='0.2.0',
+    version='0.2.1',
     url='https://github.com/ondoheer/flask-zurb-foundation',
     license='BSD',
     author='ondoheer',
