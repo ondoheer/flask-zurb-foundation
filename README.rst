@@ -73,6 +73,7 @@ Template Blocks
 ******************
 
 Here are the template blocks you can build upon.
+
 To use them just call::
 
 	{% block <blockname> %}
