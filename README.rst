@@ -53,19 +53,10 @@ Config Variables
 
 +-------------------------+----------+------------------------------------------+
 |      Variables          | defaults | What is does       			            |
-+-------------------------+----------+------------------------------------------+
-|FOUNDATION_MINIFIED      | True     | Will load most libraries and css minified|
++=========================+==========+==========================================+
+| FOUNDATION_MINIFIED     | True     | Will load most libraries and css minified|
 +-------------------------+----------+------------------------------------------+
 
-
-|FOUNDATION_CDN
-+
-|FOUNDATION_ICONS
-+
-|FOUNDATION_TEXT_DIRECTION
-+
-|FOUNDATION_LANG
-+
 
 			True	Will load most libraries and css minified
 FOUNDATION_CDN 				False	Will load most libraries from CDN
