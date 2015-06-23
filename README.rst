@@ -58,7 +58,6 @@ Config Variables
 	+-------------------------+----------+-------------------------------------------+
 
 
-			True	Will load most libraries and css minified
 FOUNDATION_CDN 				False	Will load most libraries from CDN
 FOUNDATION_ICONS			True	Will load the foundation icons css
 FOUNDATION_TEXT_DIRECTION	"ltr"	if set to 'rtl' will switch text reading orientation for languages that are read from right to left.
