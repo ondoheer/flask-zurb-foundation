@@ -51,15 +51,15 @@ Now you will have a "*foundation/base.html*" template at your disposition to sta
 Config Variables
 ******************
 
-========================= ======== ===================================================
+========================= ======== =======================================================
 Variables                 defaults What is does
-========================= ======== ===================================================
+========================= ======== =======================================================
 FOUNDATION_MINIFIED			True	Will load most libraries and css minified
 FOUNDATION_CDN 				False	Will load most libraries from CDN
 FOUNDATION_ICONS			True	Will load the foundation icons css
 FOUNDATION_TEXT_DIRECTION	"ltr"	if set to 'rtl' will switch text reading orientation for languages that are read from right to left.
 FOUNDATION_LANG				"en"	accepts a string, will set the html attribute language
-
+========================= ======== ========================================================
 
 **config["FOUNDATION_MINIFIED"]** - *defaults to True* - Will load most libraries and css minified
 
