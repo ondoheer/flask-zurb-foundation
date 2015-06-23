@@ -51,11 +51,11 @@ Now you will have a "*foundation/base.html*" template at your disposition to sta
 Config Variables
 ******************
 
-+-------------------------+----------+--------------------+
-|      Variables          | defaults | What is does       |
-+-------------------------+----------+--------------------+
-|FOUNDATION_MINIFIED | True | Will load most libraries and css minified|
-+--------------------+------+------------------------------------------+
++-------------------------+----------+------------------------------------------+
+|      Variables          | defaults | What is does       			            |
++-------------------------+----------+------------------------------------------+
+|FOUNDATION_MINIFIED      | True     | Will load most libraries and css minified|
++-------------------------+----------+------------------------------------------+
 
 
 |FOUNDATION_CDN
