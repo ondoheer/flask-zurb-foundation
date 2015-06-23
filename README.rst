@@ -119,6 +119,11 @@ it just includes::
 
 it should be called with **super()** unless you want to overwritte this behaviour.
 
+block title
+++++++++++++
+
+direct link to add a content between the <title> tags
+
 block styles
 ++++++++++++
 
