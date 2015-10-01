@@ -36,7 +36,7 @@ Usage
 How to use it in flask
 ************************
 
-Just wrapp your aplication like this::
+Just wrapp your application like this::
 
     from flask_zurb_foundation import Foundation
 
